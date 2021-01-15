@@ -9,13 +9,18 @@ class CreateUser(
     private val userRepository: UserRepository
 ) {
 
-    fun createUser(user: User) {
-        try {
-            val findByEmail = userRepository.findByEmail(user.email)
+    @Throws(RuntimeException::class)
+    fun createNewUser(userToCreate: User) {
 
-        } catch (e: Throwable) {
-            userRepository.save(user)
-
+        if (userExists(userToCreate)) {
+            throw UserAlreadyCreatedException("User with email ${userToCreate.email} already created")
         }
+        userRepository.save(userToCreate)
+    }
+
+    @Throws(RuntimeException::class)
+    fun userExists(user: User): Boolean {
+        val userFromDatabase = userRepository.findByEmail(user.email)
+        return userFromDatabase.isPresent
     }
 }
