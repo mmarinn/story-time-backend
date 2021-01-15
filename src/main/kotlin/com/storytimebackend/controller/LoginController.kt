@@ -19,13 +19,13 @@ class LoginController {
     lateinit var loginInApp: LoginInApp
 
     @GetMapping("/user")
-    fun loginInApp(@RequestParam email: String, @RequestParam password: String): ResponseEntity<String> {
+    fun loginInApp(@RequestParam email: String, @RequestParam password: String): ResponseEntity<LoginResponse> {
 
         try {
             val userOptional = loginInApp.retrieveFromDatabase(email, password)
             val user = userOptional.get()
             if (checkCredentials(user, email, password)) {
-                return ResponseEntity(user.fullName, HttpStatus.OK)
+                return ResponseEntity(LoginResponse(user.fullName), HttpStatus.OK)
 
             }
             logger.info("User with $email not autorized")

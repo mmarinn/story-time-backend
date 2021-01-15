@@ -20,7 +20,7 @@ class CreateUserController {
     lateinit var createUser: CreateUser
 
     @PostMapping("/user")
-    fun createNewUser(@RequestBody user: User): ResponseEntity<String> {
+    fun createNewUser(@RequestBody user: User): ResponseEntity<HttpStatus> {
         try {
             createUser.createNewUser(user)
 
