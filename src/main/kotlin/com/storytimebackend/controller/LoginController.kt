@@ -5,6 +5,7 @@ import com.storytimebackend.usecases.LoginInApp
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
+import org.springframework.http.HttpStatus.*
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -25,15 +26,15 @@ class LoginController {
             val userOptional = loginInApp.retrieveFromDatabase(email, password)
             val user = userOptional.get()
             if (checkCredentials(user, email, password)) {
-                return ResponseEntity(LoginResponse(user.fullName), HttpStatus.OK)
+                return ResponseEntity(LoginResponse(user.fullName), OK)
 
             }
             logger.info("User with $email not autorized")
-            return ResponseEntity(HttpStatus.UNAUTHORIZED)
+            return ResponseEntity(UNAUTHORIZED)
 
         } catch (e: Throwable) {
             logger.info("User with email $email not found")
-            return ResponseEntity(HttpStatus.NOT_FOUND)
+            return ResponseEntity(NOT_FOUND)
         }
     }
 
