@@ -1,10 +1,9 @@
-package com.storytimebackend.controller
+package com.storytimebackend.controller.user
 
 import com.storytimebackend.entities.User
-import com.storytimebackend.usecases.LoginInApp
+import com.storytimebackend.usecases.user.LoginInApp
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatus.*
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping

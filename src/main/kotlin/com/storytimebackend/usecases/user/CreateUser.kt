@@ -1,4 +1,4 @@
-package com.storytimebackend.usecases
+package com.storytimebackend.usecases.user
 
 import com.storytimebackend.drivers.database.UserRepository
 import com.storytimebackend.entities.User

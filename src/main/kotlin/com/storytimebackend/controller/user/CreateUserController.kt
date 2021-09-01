@@ -1,8 +1,8 @@
-package com.storytimebackend.controller
+package com.storytimebackend.controller.user
 
 import com.storytimebackend.entities.User
-import com.storytimebackend.usecases.CreateUser
-import com.storytimebackend.usecases.UserAlreadyCreatedException
+import com.storytimebackend.usecases.user.CreateUser
+import com.storytimebackend.usecases.user.UserAlreadyCreatedException
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
